@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+
+{% block title %}Exercise Library - Woopy{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="mb-8">
+    <h1 class="text-4xl font-bold text-gray-900">Exercise Library</h1>
+    <p class="mt-2 text-gray-600">Browse and search our comprehensive exercise database</p>
+</div>
+
+<!-- Filters & Search -->
+<div class="bg-white rounded-lg shadow p-6 mb-6">
+    <div class="flex flex-col md:flex-row gap-4">
+        <!-- Search -->
+        <div class="flex-1">
+            <input
+                type="text"
+                placeholder="Search exercises..."
+                hx-get="/api/exercises/search"
+                hx-trigger="keyup changed delay:500ms"
+                hx-target="#exercises-grid"
+                hx-indicator="#spinner"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+        </div>
+
+        <!-- Filter by Muscle Group -->
+        <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                hx-get="/api/exercises"
+                hx-trigger="change"
+                hx-target="#exercises-grid">
+            <option value="">All Muscle Groups</option>
+            <option value="chest">Chest</option>
+            <option value="back">Back</option>
+            <option value="shoulders">Shoulders</option>
+            <option value="biceps">Biceps</option>
+            <option value="triceps">Triceps</option>
+            <option value="forearms">Forearms</option>
+            <option value="legs">Legs</option>
+            <option value="glutes">Glutes</option>
+            <option value="abs">Abs</option>
+        </select>
+
+        <!-- Filter by Equipment -->
+        <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                hx-get="/api/exercises"
+                hx-trigger="change"
+                hx-target="#exercises-grid">
+            <option value="">All Equipment</option>
+            <option value="barbell">Barbell</option>
+            <option value="dumbbell">Dumbbell</option>
+            <option value="cable">Cable</option>
+            <option value="machine">Machine</option>
+            <option value="bodyweight">Bodyweight</option>
+        </select>
+    </div>
+</div>
+
+<!-- Loading Spinner -->
+<div id="spinner" class="htmx-indicator">
+    <div class="flex items-center justify-center py-4">
+    <div class="animate-spin">
+        <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+        </svg>
+    </div>
+</div>
+</div>
+
+<!-- Exercise Grid -->
+<div id="exercises-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Exercise Card 1 -->
+    <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden group">
+        <div class="h-40 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+            <svg class="w-16 h-16 text-white opacity-20" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
+            </svg>
+        </div>
+        <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900">Barbell Bench Press</h3>
+            <div class="flex flex-wrap gap-2 mt-3">
+                <span class="inline-block px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded">Chest</span>
+                <span class="inline-block px-2 py-1 bg-purple-100 text-purple-800 text-xs font-medium rounded">Shoulders</span>
+                <span class="inline-block px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded">Triceps</span>
+            </div>
+            <p class="text-sm text-gray-600 mt-3">Equipment: Barbell</p>
+            <p class="text-sm text-gray-500 mt-1">Difficulty: Intermediate</p>
+            <p class="text-sm text-gray-600 mt-3">Press a barbell from chest height to arm's length above your head.</p>
+            <button class="mt-4 w-full text-blue-600 hover:text-blue-700 font-medium text-sm">
+                Add to Workout
+            </button>
+        </div>
+    </div>
+
+    <!-- Exercise Card 2 -->
+    <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden group">
+        <div class="h-40 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
+            <svg class="w-16 h-16 text-white opacity-20" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
+            </svg>
+        </div>
+        <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900">Barbell Squat</h3>
+            <div class="flex flex-wrap gap-2 mt-3">
+                <span class="inline-block px-2 py-1 bg-red-100 text-red-800 text-xs font-medium rounded">Quads</span>
+                <span class="inline-block px-2 py-1 bg-orange-100 text-orange-800 text-xs font-medium rounded">Glutes</span>
+                <span class="inline-block px-2 py-1 bg-pink-100 text-pink-800 text-xs font-medium rounded">Hamstrings</span>
+            </div>
+            <p class="text-sm text-gray-600 mt-3">Equipment: Barbell</p>
+            <p class="text-sm text-gray-500 mt-1">Difficulty: Advanced</p>
+            <p class="text-sm text-gray-600 mt-3">Lower your body as if sitting back into a chair, keeping chest upright.</p>
+            <button class="mt-4 w-full text-blue-600 hover:text-blue-700 font-medium text-sm">
+                Add to Workout
+            </button>
+        </div>
+    </div>
+
+    <!-- Exercise Card 3 -->
+    <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden group">
+        <div class="h-40 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
+            <svg class="w-16 h-16 text-white opacity-20" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
+            </svg>
+        </div>
+        <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900">Deadlift</h3>
+            <div class="flex flex-wrap gap-2 mt-3">
+                <span class="inline-block px-2 py-1 bg-gray-200 text-gray-800 text-xs font-medium rounded">Back</span>
+                <span class="inline-block px-2 py-1 bg-orange-100 text-orange-800 text-xs font-medium rounded">Glutes</span>
+                <span class="inline-block px-2 py-1 bg-pink-100 text-pink-800 text-xs font-medium rounded">Hamstrings</span>
+            </div>
+            <p class="text-sm text-gray-600 mt-3">Equipment: Barbell</p>
+            <p class="text-sm text-gray-500 mt-1">Difficulty: Advanced</p>
+            <p class="text-sm text-gray-600 mt-3">Lift bar from the floor to hip height, keeping your back straight throughout.</p>
+            <button class="mt-4 w-full text-blue-600 hover:text-blue-700 font-medium text-sm">
+                Add to Workout
+            </button>
+        </div>
+    </div>
+
+    <!-- Exercise Card 4 -->
+    <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden group">
+        <div class="h-40 bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center">
+            <svg class="w-16 h-16 text-white opacity-20" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
+            </svg>
+        </div>
+        <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900">Pull-ups</h3>
+            <div class="flex flex-wrap gap-2 mt-3">
+                <span class="inline-block px-2 py-1 bg-gray-200 text-gray-800 text-xs font-medium rounded">Back</span>
+                <span class="inline-block px-2 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded">Biceps</span>
+            </div>
+            <p class="text-sm text-gray-600 mt-3">Equipment: Pull-up Bar</p>
+            <p class="text-sm text-gray-500 mt-1">Difficulty: Intermediate</p>
+            <p class="text-sm text-gray-600 mt-3">Hang from a bar and pull your body upward until your chin is above the bar.</p>
+            <button class="mt-4 w-full text-blue-600 hover:text-blue-700 font-medium text-sm">
+                Add to Workout
+            </button>
+        </div>
+    </div>
+
+    <!-- Exercise Card 5 -->
+    <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden group">
+        <div class="h-40 bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center">
+            <svg class="w-16 h-16 text-white opacity-20" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
+            </svg>
+        </div>
+        <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900">Dumbbell Rows</h3>
+            <div class="flex flex-wrap gap-2 mt-3">
+                <span class="inline-block px-2 py-1 bg-gray-200 text-gray-800 text-xs font-medium rounded">Back</span>
+                <span class="inline-block px-2 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded">Biceps</span>
+            </div>
+            <p class="text-sm text-gray-600 mt-3">Equipment: Dumbbell</p>
+            <p class="text-sm text-gray-500 mt-1">Difficulty: Beginner</p>
+            <p class="text-sm text-gray-600 mt-3">Row a dumbbell to your hip, focusing on contracting your back muscles.</p>
+            <button class="mt-4 w-full text-blue-600 hover:text-blue-700 font-medium text-sm">
+                Add to Workout
+            </button>
+        </div>
+    </div>
+
+    <!-- Exercise Card 6 -->
+    <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden group">
+        <div class="h-40 bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center">
+            <svg class="w-16 h-16 text-white opacity-20" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
+            </svg>
+        </div>
+        <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900">Push-ups</h3>
+            <div class="flex flex-wrap gap-2 mt-3">
+                <span class="inline-block px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded">Chest</span>
+                <span class="inline-block px-2 py-1 bg-purple-100 text-purple-800 text-xs font-medium rounded">Shoulders</span>
+                <span class="inline-block px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded">Triceps</span>
+            </div>
+            <p class="text-sm text-gray-600 mt-3">Equipment: Bodyweight</p>
+            <p class="text-sm text-gray-500 mt-1">Difficulty: Beginner</p>
+            <p class="text-sm text-gray-600 mt-3">Lower your body until your chest nearly touches the floor, then push back up.</p>
+            <button class="mt-4 w-full text-blue-600 hover:text-blue-700 font-medium text-sm">
+                Add to Workout
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Pagination -->
+<div class="mt-12 flex items-center justify-center space-x-2">
+    <button class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-50 transition">← Previous</button>
+    <button class="px-3 py-2 bg-blue-600 text-white rounded">1</button>
+    <button class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-50 transition">2</button>
+    <button class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-50 transition">3</button>
+    <button class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-50 transition">Next →</button>
+</div>
+{% endblock %}
