@@ -1,0 +1,15 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: local
+    hooks:
+      - id: branch-name
+        name: Enforce branch naming
+        language: script
+        entry: .github/scripts/check-branch-name.sh
+        stages: [pre-push]

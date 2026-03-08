@@ -10,7 +10,7 @@
 ```
 woopy/
 ├── app/
-│   ├── main.py                    (FastAPI application with 35 routes)
+│   ├── main.py
 │   ├── __init__.py
 │   ├── static/
 │   │   ├── css/style.css          (Custom Tailwind enhancements)
@@ -49,24 +49,6 @@ woopy/
 ├── README.md                     (Project documentation)
 ├── PROJECT_PLAN.md              (Architecture & design)
 └── test_frontend.py             (Frontend validation script)
-```
-
----
-
-## Frontend Test Results
-
-```
-✅ /                              - Login page
-✅ /auth/login                    - Login form
-✅ /auth/register                 - Registration form
-✅ /dashboard                     - Dashboard with stats & widgets
-✅ /workouts                      - Workouts list with cards
-✅ /workouts/1                    - Workout detail view
-✅ /exercises                     - Exercise library with filters
-✅ /sessions/1/log                - Workout logging interface
-✅ /progress                      - Progress dashboard with metrics
-
-Results: 9 passed, 0 failed ✅
 ```
 
 ---
@@ -143,10 +125,8 @@ Results: 9 passed, 0 failed ✅
 
 ### 1. Install Dependencies
 ```bash
-cd /Users/sbt/work/projects/fastapi/woopy
-uv venv .venv
-source .venv/bin/activate
-uv pip install fastapi uvicorn jinja2 python-dotenv httpx
+cd woopy
+uv sync
 ```
 
 ### 2. Run the Development Server
@@ -161,7 +141,7 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 ### 3. View in Browser
-```
+cd woopy
 http://localhost:8000
 ```
 

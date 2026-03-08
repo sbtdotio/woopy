@@ -9,6 +9,5 @@ echo ""
 echo "📚 Installing/updating dependencies..."
 uv sync
 
-# Change to app directory and run
-cd app
-uv run fastapi dev --port 8001
+# Run FastAPI app from project root
+uv run fastapi dev app/main.py --port 8001

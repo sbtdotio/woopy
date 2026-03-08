@@ -248,10 +248,7 @@ exercise_library
 **Why this design:**
 - System-wide exercise catalog (not user-specific initially)
 - Reusable across all workouts
-- Optimization: Query by muscle group for recomm
-
-endations
-
+- Optimization: Query by muscle group for recommendations
 ---
 
 #### 4. **WorkoutExercises** (Join Table - Exercises in a Workout)

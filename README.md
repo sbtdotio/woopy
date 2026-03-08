@@ -29,7 +29,7 @@ Built following SDLC best practices with clean code principles, this project ser
 - **SQLAlchemy 2.0** - Type-safe ORM for database interactions
 - **Alembic** - Database migration management
 - **Pydantic** - Data validation and serialization
-- **Python 3.9+**
+- **Python 3.13+**
 
 ### Frontend
 - **Jinja2** - Server-side template engine
@@ -49,7 +49,7 @@ Built following SDLC best practices with clean code principles, this project ser
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.9+
+- Python 3.13+
 - uv (install: `pip install uv`)
 - Git
 
@@ -57,7 +57,8 @@ Built following SDLC best practices with clean code principles, this project ser
 
 1. **Clone the repository**
    ```bash
-   cd /Users/sbt/work/projects/fastapi/woopy
+   git clone https://github.com/sbtdotio/woopy.git
+   cd woopy
    ```
 
 2. **Create virtual environment**
