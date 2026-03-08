@@ -1,0 +1,242 @@
+{% extends 'base.html' %}
+
+{% block title %}Progress - Woopy{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="mb-8">
+    <h1 class="text-4xl font-bold text-gray-900">Progress Dashboard</h1>
+    <p class="mt-2 text-gray-600">Track your fitness metrics and improvements over time</p>
+</div>
+
+<!-- Add Metric Button -->
+<div class="mb-8 text-right">
+    <button
+        hx-get="/api/progress/metrics/form"
+        hx-target="#metrics-modal"
+        class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 font-medium transition"
+    >
+        + Add Metric
+    </button>
+</div>
+
+<!-- Progress Metrics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+    <!-- Metric Card: Bench Press 1RM -->
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+        <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
+            <h3 class="text-lg font-bold text-white">Bench Press 1RM</h3>
+        </div>
+        <div class="p-6">
+            <div class="mb-6">
+                <p class="text-gray-600 text-sm font-medium">Current</p>
+                <p class="text-4xl font-bold text-blue-600 mt-2">160 kg</p>
+                <p class="text-sm text-green-600 font-medium mt-1">↑ 10 kg since last month</p>
+            </div>
+            <div class="bg-gray-50 rounded p-4 mb-4">
+                <p class="text-xs font-medium text-gray-600 uppercase mb-3">Last 6 Months</p>
+                <div class="space-y-2">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Mar 2026</span>
+                        <span class="font-semibold text-gray-900">160 kg</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Feb 2026</span>
+                        <span class="font-semibold text-gray-900">150 kg</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Jan 2026</span>
+                        <span class="font-semibold text-gray-900">145 kg</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Dec 2025</span>
+                        <span class="font-semibold text-gray-900">140 kg</span>
+                    </div>
+                </div>
+            </div>
+            <button class="w-full text-blue-600 hover:text-blue-700 font-medium text-sm py-2 border border-blue-200 rounded">
+                View Details
+            </button>
+        </div>
+    </div>
+
+    <!-- Metric Card: Squat 1RM -->
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+        <div class="bg-gradient-to-r from-green-600 to-green-700 px-6 py-4">
+            <h3 class="text-lg font-bold text-white">Squat 1RM</h3>
+        </div>
+        <div class="p-6">
+            <div class="mb-6">
+                <p class="text-gray-600 text-sm font-medium">Current</p>
+                <p class="text-4xl font-bold text-green-600 mt-2">210 kg</p>
+                <p class="text-sm text-green-600 font-medium mt-1">↑ 20 kg since last month</p>
+            </div>
+            <div class="bg-gray-50 rounded p-4 mb-4">
+                <p class="text-xs font-medium text-gray-600 uppercase mb-3">Last 6 Months</p>
+                <div class="space-y-2">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Mar 2026</span>
+                        <span class="font-semibold text-gray-900">210 kg</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Feb 2026</span>
+                        <span class="font-semibold text-gray-900">190 kg</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Jan 2026</span>
+                        <span class="font-semibold text-gray-900">180 kg</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Dec 2025</span>
+                        <span class="font-semibold text-gray-900">170 kg</span>
+                    </div>
+                </div>
+            </div>
+            <button class="w-full text-green-600 hover:text-green-700 font-medium text-sm py-2 border border-green-200 rounded">
+                View Details
+            </button>
+        </div>
+    </div>
+
+    <!-- Metric Card: Body Weight -->
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+        <div class="bg-gradient-to-r from-purple-600 to-purple-700 px-6 py-4">
+            <h3 class="text-lg font-bold text-white">Body Weight</h3>
+        </div>
+        <div class="p-6">
+            <div class="mb-6">
+                <p class="text-gray-600 text-sm font-medium">Current</p>
+                <p class="text-4xl font-bold text-purple-600 mt-2">88 kg</p>
+                <p class="text-sm text-orange-600 font-medium mt-1">↓ 2 kg since last month</p>
+            </div>
+            <div class="bg-gray-50 rounded p-4 mb-4">
+                <p class="text-xs font-medium text-gray-600 uppercase mb-3">Last 6 Months</p>
+                <div class="space-y-2">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Mar 2026</span>
+                        <span class="font-semibold text-gray-900">88 kg</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Feb 2026</span>
+                        <span class="font-semibold text-gray-900">90 kg</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Jan 2026</span>
+                        <span class="font-semibold text-gray-900">91 kg</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Dec 2025</span>
+                        <span class="font-semibold text-gray-900">92 kg</span>
+                    </div>
+                </div>
+            </div>
+            <button class="w-full text-purple-600 hover:text-purple-700 font-medium text-sm py-2 border border-purple-200 rounded">
+                View Details
+            </button>
+        </div>
+    </div>
+
+    <!-- Metric Card: Deadlift 1RM -->
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+        <div class="bg-gradient-to-r from-red-600 to-red-700 px-6 py-4">
+            <h3 class="text-lg font-bold text-white">Deadlift 1RM</h3>
+        </div>
+        <div class="p-6">
+            <div class="mb-6">
+                <p class="text-gray-600 text-sm font-medium">Current</p>
+                <p class="text-4xl font-bold text-red-600 mt-2">270 kg</p>
+                <p class="text-sm text-green-600 font-medium mt-1">↑ 15 kg since last month</p>
+            </div>
+            <div class="bg-gray-50 rounded p-4 mb-4">
+                <p class="text-xs font-medium text-gray-600 uppercase mb-3">Last 6 Months</p>
+                <div class="space-y-2">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Mar 2026</span>
+                        <span class="font-semibold text-gray-900">270 kg</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Feb 2026</span>
+                        <span class="font-semibold text-gray-900">255 kg</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Jan 2026</span>
+                        <span class="font-semibold text-gray-900">245 kg</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Dec 2025</span>
+                        <span class="font-semibold text-gray-900">240 kg</span>
+                    </div>
+                </div>
+            </div>
+            <button class="w-full text-red-600 hover:text-red-700 font-medium text-sm py-2 border border-red-200 rounded">
+                View Details
+            </button>
+        </div>
+    </div>
+
+    <!-- Metric Card: Pull-ups Max Reps -->
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+        <div class="bg-gradient-to-r from-yellow-600 to-yellow-700 px-6 py-4">
+            <h3 class="text-lg font-bold text-white">Pull-ups (Max Reps)</h3>
+        </div>
+        <div class="p-6">
+            <div class="mb-6">
+                <p class="text-gray-600 text-sm font-medium">Current</p>
+                <p class="text-4xl font-bold text-yellow-600 mt-2">15 reps</p>
+                <p class="text-sm text-green-600 font-medium mt-1">↑ 2 reps since last month</p>
+            </div>
+            <div class="bg-gray-50 rounded p-4 mb-4">
+                <p class="text-xs font-medium text-gray-600 uppercase mb-3">Last 6 Months</p>
+                <div class="space-y-2">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Mar 2026</span>
+                        <span class="font-semibold text-gray-900">15 reps</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Feb 2026</span>
+                        <span class="font-semibold text-gray-900">13 reps</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Jan 2026</span>
+                        <span class="font-semibold text-gray-900">11 reps</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600">Dec 2025</span>
+                        <span class="font-semibold text-gray-900">10 reps</span>
+                    </div>
+                </div>
+            </div>
+            <button class="w-full text-yellow-600 hover:text-yellow-700 font-medium text-sm py-2 border border-yellow-200 rounded">
+                View Details
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Summary Stats -->
+<div class="bg-white rounded-lg shadow p-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Overall Progress Summary</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="text-center pb-6 border-b md:border-b-0 md:border-r border-gray-200">
+            <p class="text-gray-600 text-sm font-medium">Total Workouts</p>
+            <p class="text-4xl font-bold text-gray-900 mt-2">156</p>
+            <p class="text-sm text-gray-600 mt-2">Since joining (Jan 2025)</p>
+        </div>
+        <div class="text-center pb-6 border-b md:border-b-0 md:border-r border-gray-200">
+            <p class="text-gray-600 text-sm font-medium">Average/Week</p>
+            <p class="text-4xl font-bold text-gray-900 mt-2">3.2</p>
+            <p class="text-sm text-gray-600 mt-2">Last 12 weeks</p>
+        </div>
+        <div class="text-center pb-6 border-b md:border-b-0 md:border-r border-gray-200">
+            <p class="text-gray-600 text-sm font-medium">Total Volume</p>
+            <p class="text-4xl font-bold text-gray-900 mt-2">45.2K</p>
+            <p class="text-sm text-gray-600 mt-2">Kilograms lifted</p>
+        </div>
+        <div class="text-center">
+            <p class="text-gray-600 text-sm font-medium">Current Streak</p>
+            <p class="text-4xl font-bold text-green-600 mt-2">8 days</p>
+            <p class="text-sm text-gray-600 mt-2">Longest: 42 days</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

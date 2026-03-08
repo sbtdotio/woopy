@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "woopy"
+version = "0.1.0"
+description = "Workout Planner - Your personal fitness companion"
+readme = "README.md"
+requires-python = ">=3.13"
+license = {text = "MIT"}
+authors = [{name = "BERTIT Sabir", email = "sabie-bertit@hotmail.fr"}]
+keywords = ["fitness", "workout", "planner", "fastapi", "sqlalchemy"]
+
+# Core dependencies
+dependencies = [
+    "fastapi[standard]>=0.128.8",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.13.0",
+    "mypy>=1.7.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/bertitsabir/woopy"
+Repository = "https://github.com/bertitsabir/woopy.git"
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.3.0",
+]

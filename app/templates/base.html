@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Woopy - Workout Planner{% endblock %}</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+
+    <!-- Alpine.js for lightweight interactivity (optional) -->
+    <script src="https://unpkg.com/alpinejs@3/dist/cdn.min.js" defer></script>
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Navigation Bar -->
+    {% include 'components/navbar.html' %}
+
+    <!-- Main Content -->
+    <div class="flex flex-col min-h-screen">
+        <!-- Header with Breadcrumbs (optional) -->
+        {% block page_header %}{% endblock %}
+
+        <!-- Main Container -->
+        <main class="flex-1 container mx-auto px-4 py-8 max-w-7xl">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <!-- Footer -->
+    {% include 'components/footer.html' %}
+
+    <!-- Global Scripts -->
+    <script src="{{ url_for('static', path='js/main.js') }}"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!-- Card Component -->
+<!-- Usage: {% include 'components/card.html' with context %}
+    Required params: content (inner HTML)
+    Optional params: title, class, clickable=False, hx_target
+-->
+<div class="bg-white rounded-lg shadow hover:shadow-md transition
+           {% if clickable %} cursor-pointer {% endif %} p-6
+           {% if class %} {{ class }} {% endif %}">
+    {% if title %}
+    <h3 class="text-lg font-semibold text-gray-900 mb-3">{{ title }}</h3>
+    {% endif %}
+    {{ content }}
+</div>

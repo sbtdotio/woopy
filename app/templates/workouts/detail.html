@@ -1,0 +1,303 @@
+{% extends 'base.html' %}
+
+{% block title %}Push Day - Woopy{% endblock %}
+
+{% block content %}
+<!-- Header with Actions -->
+<div class="mb-8 flex items-center justify-between">
+    <div>
+        <a href="/workouts" class="text-blue-600 hover:text-blue-700 text-sm font-medium">← Back to Workouts</a>
+        <h1 class="text-4xl font-bold text-gray-900 mt-2">Push Day</h1>
+        <p class="mt-2 text-gray-600">Chest, shoulders, and triceps focused routine</p>
+    </div>
+    <div class="flex space-x-2">
+    </div>
+</div>
+
+<!-- Workout Info Cards -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+    <div class="bg-white rounded-lg shadow p-6">
+        <p class="text-gray-600 text-sm font-medium">Difficulty</p>
+        <p class="text-2xl font-bold text-gray-900 mt-2">Intermediate</p>
+    </div>
+    <div class="bg-white rounded-lg shadow p-6">
+        <p class="text-gray-600 text-sm font-medium">Estimated Duration</p>
+        <p class="text-2xl font-bold text-gray-900 mt-2">45 min</p>
+    </div>
+    <div class="bg-white rounded-lg shadow p-6">
+        <p class="text-gray-600 text-sm font-medium">Total Exercises</p>
+        <p class="text-2xl font-bold text-gray-900 mt-2">6</p>
+    </div>
+    <div class="bg-white rounded-lg shadow p-6">
+        <p class="text-gray-600 text-sm font-medium">Times Completed</p>
+        <p class="text-2xl font-bold text-gray-900 mt-2">3</p>
+    </div>
+</div>
+
+<!-- Exercises Section -->
+<div class="bg-white rounded-lg shadow overflow-hidden">
+    <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4 flex items-center justify-between">
+        <h2 class="text-xl font-bold text-white">Exercises</h2>
+        <button
+            hx-get="/workouts/1/add-exercise"
+            hx-target="#exercises-list"
+            hx-swap="beforeend"
+            class="bg-white text-blue-600 px-4 py-2 rounded font-medium hover:bg-blue-50 transition"
+        >
+            + Add Exercise
+        </button>
+    </div>
+
+    <div id="exercises-list" class="divide-y divide-gray-200">
+        <!-- Exercise 1 -->
+        <div class="p-6 hover:bg-gray-50 transition">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl font-bold text-blue-600">1</span>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Barbell Bench Press</h3>
+                            <p class="text-sm text-gray-600 mt-1">Chest</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Sets</p>
+                            <p class="text-lg font-bold text-gray-900">4</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Reps</p>
+                            <p class="text-lg font-bold text-gray-900">6-8</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Weight</p>
+                            <p class="text-lg font-bold text-gray-900">140 kg</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Rest</p>
+                            <p class="text-lg font-bold text-gray-900">2 min</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Total Volume</p>
+                            <p class="text-lg font-bold text-gray-900">3360 kg</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="text-blue-600 hover:text-blue-700 text-sm font-medium">Edit</button>
+                    <button class="text-red-600 hover:text-red-700 text-sm font-medium">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 2 -->
+        <div class="p-6 hover:bg-gray-50 transition">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl font-bold text-blue-600">2</span>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Incline Dumbbell Press</h3>
+                            <p class="text-sm text-gray-600 mt-1">Chest, Shoulders</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Sets</p>
+                            <p class="text-lg font-bold text-gray-900">3</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Reps</p>
+                            <p class="text-lg font-bold text-gray-900">8-10</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Weight</p>
+                            <p class="text-lg font-bold text-gray-900">50 kg</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Rest</p>
+                            <p class="text-lg font-bold text-gray-900">90 sec</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Total Volume</p>
+                            <p class="text-lg font-bold text-gray-900">1500 kg</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="text-blue-600 hover:text-blue-700 text-sm font-medium">Edit</button>
+                    <button class="text-red-600 hover:text-red-700 text-sm font-medium">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 3 -->
+        <div class="p-6 hover:bg-gray-50 transition">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl font-bold text-blue-600">3</span>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Dumbbell Flyes</h3>
+                            <p class="text-sm text-gray-600 mt-1">Chest</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Sets</p>
+                            <p class="text-lg font-bold text-gray-900">3</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Reps</p>
+                            <p class="text-lg font-bold text-gray-900">10-12</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Weight</p>
+                            <p class="text-lg font-bold text-gray-900">35 kg</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Rest</p>
+                            <p class="text-lg font-bold text-gray-900">60 sec</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Total Volume</p>
+                            <p class="text-lg font-bold text-gray-900">1155 kg</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="text-blue-600 hover:text-blue-700 text-sm font-medium">Edit</button>
+                    <button class="text-red-600 hover:text-red-700 text-sm font-medium">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 4 -->
+        <div class="p-6 hover:bg-gray-50 transition">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl font-bold text-blue-600">4</span>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Overhead Press</h3>
+                            <p class="text-sm text-gray-600 mt-1">Shoulders, Triceps</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Sets</p>
+                            <p class="text-lg font-bold text-gray-900">4</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Reps</p>
+                            <p class="text-lg font-bold text-gray-900">6-8</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Weight</p>
+                            <p class="text-lg font-bold text-gray-900">80 kg</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Rest</p>
+                            <p class="text-lg font-bold text-gray-900">2 min</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Total Volume</p>
+                            <p class="text-lg font-bold text-gray-900">2560 kg</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="text-blue-600 hover:text-blue-700 text-sm font-medium">Edit</button>
+                    <button class="text-red-600 hover:text-red-700 text-sm font-medium">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 5 -->
+        <div class="p-6 hover:bg-gray-50 transition">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl font-bold text-blue-600">5</span>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Lateral Raises</h3>
+                            <p class="text-sm text-gray-600 mt-1">Shoulders</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Sets</p>
+                            <p class="text-lg font-bold text-gray-900">3</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Reps</p>
+                            <p class="text-lg font-bold text-gray-900">12-15</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Weight</p>
+                            <p class="text-lg font-bold text-gray-900">20 kg</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Rest</p>
+                            <p class="text-lg font-bold text-gray-900">60 sec</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Total Volume</p>
+                            <p class="text-lg font-bold text-gray-900">900 kg</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="text-blue-600 hover:text-blue-700 text-sm font-medium">Edit</button>
+                    <button class="text-red-600 hover:text-red-700 text-sm font-medium">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise 6 -->
+        <div class="p-6 hover:bg-gray-50 transition">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl font-bold text-blue-600">6</span>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Tricep Pushdowns</h3>
+                            <p class="text-sm text-gray-600 mt-1">Triceps</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Sets</p>
+                            <p class="text-lg font-bold text-gray-900">3</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Reps</p>
+                            <p class="text-lg font-bold text-gray-900">12-15</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Weight</p>
+                            <p class="text-lg font-bold text-gray-900">50 kg</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Rest</p>
+                            <p class="text-lg font-bold text-gray-900">45 sec</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-500 uppercase">Total Volume</p>
+                            <p class="text-lg font-bold text-gray-900">2250 kg</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="text-blue-600 hover:text-blue-700 text-sm font-medium">Edit</button>
+                    <button class="text-red-600 hover:text-red-700 text-sm font-medium">Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Action Buttons -->
+<div class="mt-8 flex space-x-3 justify-center">
+</div>
+{% endblock %}
